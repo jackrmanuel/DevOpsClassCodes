@@ -1,12 +1,14 @@
-
 pipeline{
 	agent any
+	tools{
+	    maven 'maven'
+	}
       stages{
            stage('Checkout'){
 	    
                steps{
-		 echo 'cloning..'
-                 git 'https://github.com/akshu20791/DevOpsClassCodes.git'
+		         echo 'cloning..'
+                 git 'https://github.com/jackrmanuel/DevOpsClassCodes'
               }
           }
           stage('Compile'){
@@ -19,15 +21,14 @@ pipeline{
           stage('CodeReview'){
 		  
               steps{
-		    
-		  echo 'codeReview'
+		          echo 'codeReview'
                   sh 'mvn pmd:pmd'
               }
           }
            stage('UnitTest'){
 		  
               steps{
-	         
+	              echo 'UnitTest'
                   sh 'mvn test'
               }
                post {
@@ -40,11 +41,8 @@ pipeline{
           stage('Package'){
 		  
               steps{
-		  
                   sh 'mvn package'
               }
           }
-	     
-          
       }
 }
