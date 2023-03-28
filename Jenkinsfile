@@ -7,8 +7,8 @@ pipeline{
            stage('Checkout'){
 	    
                steps{
-		         echo 'cloning..'
-                 git 'https://github.com/jackrmanuel/DevOpsClassCodes'
+		  echo 'cloning..'
+                  git 'https://github.com/jackrmanuel/DevOpsClassCodes'
               }
           }
           stage('Compile'){
@@ -21,14 +21,14 @@ pipeline{
           stage('CodeReview'){
 		  
               steps{
-		          echo 'codeReview'
+		  echo 'codeReview'
                   sh 'mvn pmd:pmd'
               }
           }
            stage('UnitTest'){
 		  
               steps{
-	              echo 'UnitTest'
+	          echo 'UnitTest'
                   sh 'mvn test'
               }
                post {
